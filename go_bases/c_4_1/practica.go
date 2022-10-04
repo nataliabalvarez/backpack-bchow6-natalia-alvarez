@@ -16,13 +16,13 @@ type SalaryCustomError struct {
 }
 
 func (e *SalaryCustomError) Error() string {
-	return fmt.Sprintf("- %v", e.Msg)
+	return e.Msg
 }
 
 func DebePagarImpuesto(salary int) (err error) {
 	if salary < MinimoNoImponible {
 		err = &SalaryCustomError{
-			Msg: "Error: el salario ingresado no alcanza el mínimo imponible",
+			Msg: "error: el salario ingresado no alcanza el mínimo imponible",
 		}
 		return
 	}
@@ -30,22 +30,22 @@ func DebePagarImpuesto(salary int) (err error) {
 }
 
 // ---------------- Ejercicio 2
-var SalaryCustomError2 = errors.New("Error: el salario ingresado no alcanza el mínimo imponible")
+var SalaryCustomError2 = errors.New("error: el salario ingresado no alcanza el mínimo imponible")
 
 func DebePagarImpuesto2(salary int) error {
 	if salary < MinimoNoImponible {
 
-		return fmt.Errorf("%w", SalaryCustomError2)
+		return SalaryCustomError2
 	}
 	return nil
 }
 
-// ---------------- Ejercicio 2
+// ---------------- Ejercicio 3
 func DebePagarImpuesto3(salary int) error {
 	if salary < MinimoNoImponible {
 
-		error := fmt.Errorf("Error: el salario ingresado no alcanza el mínimo imponible")
-		return error
+		err := fmt.Errorf("error: el minimo no imponible es de 150000 y el salario ingresado es de %d", salary)
+		return err
 
 	}
 	return nil
