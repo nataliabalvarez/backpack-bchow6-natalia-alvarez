@@ -8,7 +8,6 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	structure "github.com/nataliabalvarez/backpack-bchow6-natalia-alvarez/go_web/structures"
 )
 
 
